@@ -1,118 +1,315 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import {StyleSheet, View, FlatList, Dimensions} from 'react-native';
+import {useState, useRef} from 'react';
+import FlatListItem from './FlatListItem';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+export default function App() {
+  const [items, setItems] = useState([
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+    {
+      id: '1',
+      name: 'GeeksforGeeks View 1',
+    },
+    {
+      id: '2',
+      name: 'GeeksforGeeks View 2',
+    },
+    {
+      id: '3',
+      name: 'GeeksforGeeks View 3',
+    },
+    {
+      id: '4',
+      name: 'GeeksforGeeks View 4',
+    },
+  ]);
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  const totalPages = Math.ceil(items.length / 12);
+  const snapToInterval = Dimensions.get('window').width;
+  const [currentSnapIndex, setCurrentSnapIndex] = useState(0);
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+  const onScroll = event => {
+    setCurrentSnapIndex(event.nativeEvent?.contentOffset?.x / snapToInterval);
+  };
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View>
+      <FlatList
+        data={Array(totalPages).fill(0)}
+        renderItem={({item, index}) => {
+          const firstIndex = 12 * index,
+            lastIndex = firstIndex + 12;
+          return (
+            <FlatListItem
+              index={index}
+              data={items.slice(firstIndex, lastIndex)}
+            />
+          );
+        }}
+        onMomentumScrollEnd={onScroll}
+        keyExtractor={item => item.id}
+        snapToAlignment="start"
+        decelerationRate={'fast'}
+        snapToInterval={snapToInterval}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        disableIntervalMomentum
+        overScrollMode="never"
+        //pagingEnabled
+      />
+      {totalPages > 1 ? (
+        <View style={styles.dotContainer}>
+          {Array(totalPages)
+            .fill(0)
+            .map((item, index) => (
+              <View
+                key={index}
+                style={[
+                  styles.dotStyle,
+                  {
+                    backgroundColor:
+                      currentSnapIndex === index ? 'white' : 'gray',
+                  },
+                ]}
+              />
+            ))}
+        </View>
+      ) : null}
     </View>
   );
 }
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  dotContainer: {
+    height: 20,
+    backgroundColor: 'black',
+    paddingHorizontal: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'absolute',
+    borderRadius: 10,
+    bottom: 10,
+    // left: 0,
+    // right: 0,
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  dotStyle: {
+    height: 10,
+    width: 10,
+    borderRadius: 5,
+    marginHorizontal: 5,
   },
 });
-
-export default App;
